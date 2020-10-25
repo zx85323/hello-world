@@ -1,8 +1,4 @@
 # hello-world
-just try
 
-the first edits
-
-use by desktop 
-
-test to project
+the version rule
+https://semver.org/lang/zh-TW/
