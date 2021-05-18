@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#" 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	 xml:base="http://nfu.edu.csie.ccsd/">
+
+	<owl:Class rdf:ID="Stream">
+		<rdfs:subClassOf rdf:resource="#NaturallyOccurringWaterSource"/>
+	</owl:Class>
+	<owl:Class rdf:ID="BodyOfWater">
+		<rdfs:subClassOf rdf:resource="#NaturallyOccurringWaterSource"/>
+	</owl:Class>
+
+	<owl:Class rdf:ID="Brook">
+		<rdfs:subClassOf rdf:resource="#Stream"/>
+	</owl:Class>
+	<owl:Class rdf:ID="River">
+		<rdfs:subClassOf rdf:resource="#Stream"/>
+	</owl:Class>
+	<owl:Class rdf:ID="Tributary">
+		<rdfs:subClassOf rdf:resource="#Stream"/>
+	</owl:Class>
+
+	<owl:Class rdf:ID="Lake">
+		<rdfs:subClassOf rdf:resource="#BodyOfWater"/>
+	</owl:Class>
+	<owl:Class rdf:ID="Ocean">
+		<rdfs:subClassOf rdf:resource="#BodyOfWater"/>
+	</owl:Class>
+	<owl:Class rdf:ID="Sea">
+		<rdfs:subClassOf rdf:resource="#BodyOfWater"/>
+	</owl:Class>
+
+	<owl:Class rdf:ID="Rivulet">
+		<rdfs:subClassOf rdf:resource="#Brook"/>
+	</owl:Class>
+
+
+    <owl:SymmetricProperty rdf:ID="connectsTo">
+       <rdfs:domain rdf:resource="#NaturallyOccurringWaterSource"/>
+       <rdfs:range rdf:resource="#NaturallyOccurringWaterSource"/>
+    </owl:SymmetricProperty>
+
+    <owl:ObjectProperty rdf:ID="containedIn">
+       	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+       	<rdfs:domain rdf:resource="#Sea"/>
+    	<rdfs:range rdf:resource="#BodyOfWater"/>
+     </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:ID="emptiesInto">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#River"/>
+        <rdfs:range rdf:resource="#BodyOfWater"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:ID="feedsFrom">
+        <owl:inverseOf rdf:resource="#emptiesInto"/>
+        <rdfs:domain rdf:resource="#BodyOfWater"/>
+        <rdfs:range rdf:resource="#River"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:ID="emptiesInto">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#River"/>
+        <rdfs:range rdf:resource="#BodyOfWater"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:ID="feedsFrom">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <owl:inverseOf rdf:resource="#emptiesInto"/>
+        <rdfs:domain rdf:resource="#BodyOfWater"/>
+        <rdfs:range rdf:resource="#River"/>
+    </owl:ObjectProperty>
+
+	<owl:DatatypeProperty rdf:ID="length">
+		<rdfs:domain rdf:resource="#River"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+	</owl:DatatypeProperty>
+	
+</rdf:RDF>

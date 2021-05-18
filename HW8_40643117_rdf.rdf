@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://nfu.edu.csie.ccsd/" 
+         xmlns="http://nfu.edu.csie.ccsd/#" 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+	
+	<River rdf:ID="Yangtze">
+	  <length>6300 kilometers</length>
+	  <emptiesInto rdf:resource="#EastChinaSea"/>
+          <connectsTo>
+            <River rdf:about="#Wu"/>
+          </connectsTo>
+        </River>
+
+       <Sea rdf:ID="EastChinaSea">
+       	<containedIn>
+          <Sea rdf:about="#ChinaSea"/>
+       	</containedIn>
+       </Sea>
+	
+       <Sea rdf:ID="ChinaSea">
+       	<containedIn>
+          <Ocean rdf:about="#PacificOcean"/>
+       	</containedIn>
+       </Sea>
+
+</rdf:RDF>
